@@ -221,14 +221,14 @@ def logout():
     flash('Logged out successfully!')
     return redirect(url_for('home'))
 
-# 检查是否是管理员
+# check if admin
 def is_admin():
     if 'user_id' not in session:
         return False
     user = User.query.get(session['user_id'])
     return user and user.is_admin
 
-# 修改评论
+# modify comment
 @app.route('/comment/<int:comment_id>/edit', methods=['GET', 'POST'])
 @login_required
 def edit_comment(comment_id):
@@ -245,7 +245,7 @@ def edit_comment(comment_id):
     
     return render_template('edit_comment.html', comment=comment)
 
-# 删除评论
+# delete comment
 @app.route('/comment/<int:comment_id>/delete', methods=['POST'])
 @login_required
 def delete_comment(comment_id):
@@ -259,7 +259,7 @@ def delete_comment(comment_id):
     flash('Comment deleted successfully!')
     return redirect(url_for('projects'))
 
-# 管理员评论管理页面
+# admin management
 @app.route('/admin/comments')
 @login_required
 def admin_comments():
@@ -270,7 +270,7 @@ def admin_comments():
     comments = Comment.query.order_by(Comment.created_at.desc()).all()
     return render_template('admin/comments.html', comments=comments)
 
-# 在所有路由之前添加
+# add message
 @app.context_processor
 def utility_processor():
     return {
