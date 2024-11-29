@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Skills - Portfolio{% endblock %}
+
+{% block content %}
+<section class="skills">
+    <h1>My Skills</h1>
+    <div class="skills-grid">
+        {% for category, skills in skills|groupby('category') %}
+        <div class="skill-category">
+            <h2>{{ category }}</h2>
+            <div class="skill-list">
+                {% for skill in skills %}
+                <div class="skill-item">
+                    <span class="skill-name">{{ skill.name }}</span>
+                    <div class="skill-bar">
+                        <div class="skill-level" data-level="{{ skill.proficiency }}"></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %} 

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Portfolio{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>Welcome to My Portfolio</h1>
+    <p>Full Stack Developer | Problem Solver | Tech Enthusiast</p>
+</section>
+
+<section class="featured-projects">
+    <h2>Featured Projects</h2>
+    <div class="project-grid">
+        {% for project in projects %}
+        <div class="project-card">
+            <img src="{{ project.image_url }}" alt="{{ project.title }}">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description[:150] }}...</p>
+            <a href="{{ project.github_url }}" class="btn" target="_blank">View Project</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %} 

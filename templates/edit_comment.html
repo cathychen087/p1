@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Comment - Portfolio{% endblock %}
+
+{% block content %}
+<section class="edit-comment">
+    <h1>Edit Comment</h1>
+    <form method="POST" class="comment-form">
+        <div class="form-group">
+            <label for="content">Comment</label>
+            <textarea id="content" name="content" rows="3" required>{{ comment.content }}</textarea>
+        </div>
+        <button type="submit" class="btn">Update Comment</button>
+        <a href="{{ url_for('projects') }}" class="btn btn-secondary">Cancel</a>
+    </form>
+</section>
+{% endblock %} 
